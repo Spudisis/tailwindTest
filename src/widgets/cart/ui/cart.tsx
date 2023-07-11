@@ -3,7 +3,7 @@ import { ImagesItem } from "shared/api/types";
 import { GridItemWrapper } from "shared/ui/grid-item-wrapper/grid-item-wrapper";
 import { NameTitle } from "shared/ui/name-title";
 import { BlockInfoFlex } from "./block-info-flex";
-import { Rating } from "./Rating";
+import { Rating } from "./rating";
 import { Year } from "./year";
 import { Info } from "./info";
 
