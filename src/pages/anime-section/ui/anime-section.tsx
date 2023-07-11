@@ -6,32 +6,35 @@ import { useQuery } from "@tanstack/react-query";
 import { Anime } from "entities/anime/ui/anime";
 import { Cart } from "widgets/cart/ui/cart";
 import { ContainerContentPage } from "shared/ui/container-content-page";
+import { GridItemLoader } from "shared/ui/grid-item-loader";
+
 export const AnimeSection = observer(() => {
-	const { isSuccess, data } = useQuery({
+	const { data, isError, isLoading, isSuccess } = useQuery({
 		queryKey: ["animeList", Store.type, Store.page, Store.sort, Store.orderBy],
 		queryFn: () => Store.getAnime(),
 		refetchOnWindowFocus: false,
 	});
+
+	const emptyMas = Array(Store.limit).fill("");
+
 	return (
-		<ContainerContentPage>
+		<ContainerContentPage color="">
 			<AnimeSearch />
 
 			<Anime>
 				<>
-					{data && data.data ? (
-						data.data.map((elem) => (
-							<Cart
-								key={elem.mal_id}
-								src={elem.images}
-								title={elem.title}
-								url={"/anime/" + elem.mal_id}
-								score={elem.score}
-								year={elem.year}
-							/>
-						))
-					) : (
-						<div>Loading</div>
-					)}
+					{isSuccess
+						? data.data.map((elem) => (
+								<Cart
+									key={elem.mal_id}
+									src={elem.images}
+									title={elem.title}
+									url={"/anime/" + elem.mal_id}
+									score={elem.score}
+									year={elem.year}
+								/>
+						  ))
+						: emptyMas.map((_, index) => <GridItemLoader key={index} />)}
 				</>
 			</Anime>
 		</ContainerContentPage>
