@@ -1,5 +1,5 @@
 import { observer } from "mobx-react";
-import React from "react";
+import { CustomSelect } from "shared/ui/custom-select/custom-select";
 
 type FilterOrderBy = {
 	orderByList: { value: string; label: string }[];
@@ -8,17 +8,8 @@ type FilterOrderBy = {
 };
 
 export const FilterOrderBy = observer(({ orderByList, value, changeValue }: FilterOrderBy) => {
-	const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-		const value = e.target.value;
+	const handleChange = (value: string) => {
 		changeValue(value);
 	};
-	return (
-		<select value={value} onChange={handleChange}>
-			{orderByList.map((order, index) => (
-				<option value={order.value} key={index}>
-					{order.label}
-				</option>
-			))}
-		</select>
-	);
+	return <CustomSelect nameSelect="Order" onChange={handleChange} defaultValue={value} options={orderByList} />;
 });

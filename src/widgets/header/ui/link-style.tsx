@@ -1,3 +1,4 @@
+import React from "react";
 import { NavLink } from "react-router-dom";
 
 export type LinkStyle = {
@@ -5,7 +6,7 @@ export type LinkStyle = {
 	label: string;
 };
 
-export const LinkStyle = ({ link, label }: LinkStyle) => {
+export const LinkStyle = React.memo(({ link, label }: LinkStyle) => {
 	return (
 		<NavLink
 			to={link}
@@ -16,4 +17,4 @@ export const LinkStyle = ({ link, label }: LinkStyle) => {
 			{label}
 		</NavLink>
 	);
-};
+});

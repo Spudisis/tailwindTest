@@ -69,10 +69,7 @@ export const OrderByAnimeSearch = [
 		label: "All",
 		value: "ALL",
 	},
-	{
-		label: "Mal id",
-		value: "mal_id",
-	},
+
 	{
 		label: "Title",
 		value: "title",
@@ -128,10 +125,7 @@ export const OrderByMangaSearch = [
 		label: "All",
 		value: "ALL",
 	},
-	{
-		label: "Mal id",
-		value: "mal_id",
-	},
+
 	{
 		label: "Title",
 		value: "title",

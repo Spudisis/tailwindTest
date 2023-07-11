@@ -1,25 +1,15 @@
 import React from "react";
+import { CustomSelect } from "shared/ui/custom-select/custom-select";
 
-type Type<T> = {
-	types: { label: string; value: T }[];
+type Type = {
+	types: { label: string; value: string }[];
 	activeType: string;
 	changeActiveType: (s: string) => void;
 };
 
-export const TypeFilter = React.memo(<T,>({ types, activeType, changeActiveType }: Type<T>) => {
-	const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-		const value = e.target.value;
+export const TypeFilter = React.memo(({ types, activeType, changeActiveType }: Type) => {
+	const handleChange = (value: string) => {
 		changeActiveType(value);
 	};
-	return (
-		<div>
-			<select value={activeType} onChange={handleChange}>
-				{types.map((type, index) => (
-					<option value={String(type.value)} key={index}>
-						{type.label}
-					</option>
-				))}
-			</select>
-		</div>
-	);
+	return <CustomSelect nameSelect="Type" onChange={handleChange} defaultValue={activeType} options={types} />;
 });

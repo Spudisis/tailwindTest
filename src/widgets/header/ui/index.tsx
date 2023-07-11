@@ -1,4 +1,3 @@
-import { NavLink } from "react-router-dom";
 import { ContainerContentPage } from "shared/ui/container-content-page";
 import { LinkStyle } from "./link-style";
 
