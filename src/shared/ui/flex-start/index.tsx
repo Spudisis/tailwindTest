@@ -5,5 +5,5 @@ type FlexStart = {
 };
 
 export const FlexStart = ({ children }: FlexStart) => {
-	return <div className="flex justify-start gap-2">{children}</div>;
+	return <div className="flex justify-start gap-2 p-2">{children}</div>;
 };
