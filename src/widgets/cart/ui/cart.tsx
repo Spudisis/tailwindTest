@@ -1,4 +1,4 @@
-import { OpenSoloPage } from "features/open-anime-page";
+import { OpenSoloPage } from "features/open-cart-page/index";
 import { ImagesItem } from "shared/api/types";
 import { GridItemWrapper } from "shared/ui/grid-item-wrapper/grid-item-wrapper";
 import { NameTitle } from "shared/ui/name-title";

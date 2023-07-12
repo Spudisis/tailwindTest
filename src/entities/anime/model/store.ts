@@ -29,7 +29,6 @@ class AnimeStore {
 		const data = await getAnimeList(this.page, this.limit, this.type, this.sort, this.orderBy, this.rating);
 		this.checkPageCount(data);
 		if (data.data) {
-			console.log("check");
 			const prevData = this.data ? [...this.data, ...data.data] : data.data;
 			this.data = prevData;
 		}

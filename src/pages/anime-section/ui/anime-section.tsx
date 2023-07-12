@@ -20,9 +20,9 @@ export const AnimeSection = observer(() => {
 	const emptyMas = Array(Store.limit).fill("");
 
 	React.useEffect(() => {
-		console.log(scrollStatus);
 		if (scrollStatus) Store.getNewPage();
 	}, [scrollStatus]);
+
 	return (
 		<ContainerContentPage color="">
 			<AnimeSearch />
