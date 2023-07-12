@@ -172,3 +172,34 @@ export const OrderByMangaSearch = [
 		value: "favorites",
 	},
 ];
+
+export const RatingAudience = [
+	{
+		label: "All",
+		value: "ALL",
+	},
+	{
+		label: "G",
+		value: "g",
+	},
+	{
+		label: "PG",
+		value: "pg",
+	},
+	{
+		label: "PG13",
+		value: "pg13",
+	},
+	{
+		label: "R17+",
+		value: "r17",
+	},
+	{
+		label: "R",
+		value: "r",
+	},
+	{
+		label: "Rx",
+		value: "rx",
+	},
+];

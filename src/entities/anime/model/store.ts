@@ -14,14 +14,25 @@ class AnimeStore {
 	sort = "asc";
 	orderBy = "ALL";
 	data: null | AnimeItem[] = null;
+	rating = "ALL";
 
 	async getAnime() {
-		const data = await getAnimeList(this.page, this.limit, this.type, this.sort, this.orderBy);
+		const data = await getAnimeList(this.page, this.limit, this.type, this.sort, this.orderBy, this.rating);
 		this.checkPageCount(data);
 		if (data.data) {
 			this.data = data.data;
 		}
 		return data;
+	}
+	async getNewPage() {
+		this.changePage(this.page + 1);
+		const data = await getAnimeList(this.page, this.limit, this.type, this.sort, this.orderBy, this.rating);
+		this.checkPageCount(data);
+		if (data.data) {
+			console.log("check");
+			const prevData = this.data ? [...this.data, ...data.data] : data.data;
+			this.data = prevData;
+		}
 	}
 
 	changeSort(sort: string) {
@@ -43,6 +54,10 @@ class AnimeStore {
 	changeType(type: string) {
 		this.changePage(1);
 		this.type = type;
+	}
+	changeRating(rating: string) {
+		this.changePage(1);
+		this.rating = rating;
 	}
 }
 

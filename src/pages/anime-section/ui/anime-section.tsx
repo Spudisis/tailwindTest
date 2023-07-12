@@ -7,24 +7,29 @@ import { Anime } from "entities/anime/ui/anime";
 import { Cart } from "widgets/cart/ui/cart";
 import { ContainerContentPage } from "shared/ui/container-content-page";
 import { GridItemLoader } from "shared/ui/grid-item-loader";
+import { useScroll } from "shared/model/use-resize";
 
 export const AnimeSection = observer(() => {
-	const { data, isError, isLoading, isSuccess } = useQuery({
-		queryKey: ["animeList", Store.type, Store.page, Store.sort, Store.orderBy],
+	const data = Store.data;
+	const { scrollStatus } = useScroll();
+	const { isSuccess } = useQuery({
+		queryKey: ["animeList", Store.type, Store.sort, Store.orderBy, Store.rating],
 		queryFn: () => Store.getAnime(),
 		refetchOnWindowFocus: false,
 	});
-
 	const emptyMas = Array(Store.limit).fill("");
 
+	React.useEffect(() => {
+		console.log(scrollStatus);
+		if (scrollStatus) Store.getNewPage();
+	}, [scrollStatus]);
 	return (
 		<ContainerContentPage color="">
 			<AnimeSearch />
-
 			<Anime>
 				<>
-					{isSuccess
-						? data.data.map((elem) => (
+					{data && isSuccess
+						? data.map((elem) => (
 								<Cart
 									key={elem.mal_id}
 									src={elem.images}
